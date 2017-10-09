@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {appName}
+  namespace: {namespace}
+  labels:
+    app: {appName}
+data:
+  IRMA_API_CONF_ALLOW_UNSIGNED-ISSUE-REQUESTS: "false"
+  IRMA_API_CONF_ALLOW_UNSIGNED-SIGNATURE-REQUESTS: "false"
+  IRMA_API_CONF_ALLOW_UNSIGNED-VERIFICATION-REQUESTS: "false"
+  IRMA_API_CONF_CLIENT_GET-TIMEOUT: "120"
+  IRMA_API_CONF_ENABLE_VERIFICATION: "true"
+  IRMA_API_CONF_ENABLE_ISSUING: "false"
+  IRMA_API_CONF_ENABLE_SIGNING: "false"
+  IRMA_API_CONF_AUTHORIZED_SPS: "{\"diva\": [\"pbdf.pbdf.idin.*\"]}"

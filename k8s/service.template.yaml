@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {appName}
+  namespace: {namespace}
+  labels:
+    app: {appName}
+spec:
+  ports:
+  - name: {appName}
+    port: 8080
+    targetPort: http
+    protocol: TCP
+  selector:
+    app: {appName}
