@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {appName}
+  namespace: {namespace}
+  labels:
+    app: {appName}
+spec:
+  tls:
+  - hosts:
+    - dev-{appName}.appx.cloud
+    secretName: wildcard-appx-cloud-cert
+  rules:
+  - host: dev-{appName}.appx.cloud
+    http:
+      paths:
+      - backend:
+          serviceName: {appName}
+          servicePort: 8080
+        path: /

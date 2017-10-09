@@ -1,0 +1,51 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {appName}
+  namespace: {namespace}
+  labels:
+    app: {appName}
+spec:
+  revisionHistoryLimit: 3
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      name: {appName}
+      labels:
+        app: {appName}
+    spec:
+      containers:
+      - name: {appName}
+        image: {image}
+        resources:
+          limits:
+            cpu: 1
+            memory: 1500Mi
+          requests:
+            cpu: 100m
+            memory: 500Mi
+        envFrom:
+        - configMapRef:
+            name: {appName}
+        env:
+        - name: IRMA_API_CONF_BASE64_JWT_VERIFIERS_DIVA
+          valueFrom:
+            secretKeyRef:
+              key: IRMA_API_CONF_BASE64_JWT_VERIFIERS_DIVA
+              name: diva-irma-api-server
+        - name: IRMA_API_CONF_BASE64_JWT_PUBLICKEY
+          valueFrom:
+            secretKeyRef:
+              key: IRMA_API_CONF_BASE64_JWT_PUBLICKEY
+              name: diva-irma-api-server
+        - name: IRMA_API_CONF_BASE64_JWT_PRIVATEKEY
+          valueFrom:
+            secretKeyRef:
+              key: IRMA_API_CONF_BASE64_JWT_PRIVATEKEY
+              name: diva-irma-api-server
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
