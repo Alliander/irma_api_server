@@ -1,3 +1,7 @@
 [submodule "src/test/resources/irma_configuration"]
 	path = src/test/resources/irma_configuration
 	url = https://github.com/credentials/irma_configuration
+[submodule "src/test/resources/pbdf_schememanager"]
+	path = src/test/resources/pbdf_schememanager
+	url = https://github.com/credentials/pbdf-schememanager
+	branch = translate
