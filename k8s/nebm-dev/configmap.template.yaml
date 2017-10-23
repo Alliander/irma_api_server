@@ -13,4 +13,4 @@ data:
   IRMA_API_CONF_ENABLE_VERIFICATION: "true"
   IRMA_API_CONF_ENABLE_ISSUING: "false"
   IRMA_API_CONF_ENABLE_SIGNING: "false"
-  IRMA_API_CONF_AUTHORIZED_SPS: "{\"diva\": [\"pbdf.pbdf.idin.*\"]}"
+  IRMA_API_CONF_AUTHORIZED_SPS: "{\"diva\": [\"pbdf.pbdf.idin.*\", \"pbdf.pbdf.email.*\"]}"
